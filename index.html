@@ -6,10 +6,10 @@
   <title>Huberts Webcam-Übersicht</title>
   
   <!-- --- FAVICON & APPLE TOUCH ICON --- -->
-  <!-- Dieses Bild wird auf dem iPhone Homescreen angezeigt (HW = Huberts Webcams) -->
-  <link rel="apple-touch-icon" href="https://ui-avatars.com/api/?name=Huberts+Webcams&background=1e293b&color=38bdf8&size=192&rounded=true&bold=true">
-  <!-- Dieses Bild wird im Browser-Tab angezeigt -->
-  <link rel="icon" type="image/png" href="https://ui-avatars.com/api/?name=Huberts+Webcams&background=1e293b&color=38bdf8&size=32&rounded=true&bold=true">
+  <!-- "precomposed" verhindert, dass iOS Glanzeffekte hinzufügt und hilft oft bei der Erkennung -->
+  <!-- Der Parameter &v=3 zwingt das iPhone, das Icon neu abzurufen -->
+  <link rel="apple-touch-icon-precomposed" href="https://ui-avatars.com/api/?name=Huberts+Webcams&background=1e293b&color=38bdf8&size=192&rounded=false&bold=true&format=png&v=3">
+  <link rel="icon" type="image/png" href="https://ui-avatars.com/api/?name=Huberts+Webcams&background=1e293b&color=38bdf8&size=32&rounded=true&bold=true&format=png&v=3">
 
   <style>
     /* --- 1. Grundeinstellungen & Typografie --- */
@@ -38,11 +38,10 @@
       text-shadow: var(--accent-glow);
       font-weight: 300;
       border-bottom: 1px solid var(--accent-color);
-      display: inline-block; /* Geändert für Flexbox-Verhalten mit Icon */
-      display: flex;         /* Flexbox für Icon + Text */
+      display: flex;         
       align-items: center;
       justify-content: center;
-      gap: 15px;             /* Abstand zwischen Icon und Text */
+      gap: 15px;             
       padding-bottom: 10px;
       margin-left: auto;
       margin-right: auto;
@@ -120,24 +119,41 @@
       aspect-ratio: 16 / 9; 
       background-color: #000;
       overflow: hidden;
+      /* Lade-Indikator: Zeigt einen Spinner, solange kein Bild da ist */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Lade-Animation (Spinner), sichtbar bis das Bild lädt */
+    .media-container::after {
+      content: "Lade...";
+      color: #64748b;
+      font-size: 0.8rem;
+      position: absolute;
+      z-index: 0;
     }
 
     .media-container img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Füllt den Rahmen aus */
+      object-fit: cover; 
       display: block;
+      position: relative;
+      z-index: 1; /* Bild liegt über dem Lade-Text */
+      background-color: #000; /* Verdeckt Lade-Text wenn geladen */
     }
 
     .media-container iframe {
       width: 100%;
       height: 100%;
       border: none;
+      position: relative;
+      z-index: 1;
     }
 
     /* --- 5. Spezial-Hacks --- */
 
-    /* SCALE HACK: Für normale Webseiten, zoomt auf 50% */
     .scale-hack iframe {
       width: 200%;
       height: 200%;
@@ -145,13 +161,10 @@
       transform-origin: 0 0;
     }
     
-    /* EXTRA SCALE HACK: Speziell für Höchenschwand */
-    /* Wir machen das Fenster 3.5x so groß und zoomen es dann klein, 
-       damit die große Webseite reinpasst ohne Scrollbalken */
     .scale-hack-strong iframe {
       width: 350%;            
       height: 350%;           
-      transform: scale(0.2857); /* Kehrwert von 3.5 */
+      transform: scale(0.2857);
       transform-origin: 0 0;
     }
 
@@ -169,7 +182,6 @@
 <body>
 
   <h1>
-    <!-- Kleines Kamera-Icon vor der Überschrift -->
     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
       <circle cx="12" cy="13" r="4"></circle>
@@ -179,16 +191,20 @@
 
   <div class="dashboard-grid">
 
-    <!-- EDSF Block - MIT PROXY (wsrv.nl) -->
+    <!-- EDSF Block -->
     <div class="cam-card">
       <div class="cam-header">
         <a href="http://www.lgh-platz.de/cam/cam11.jpg" target="_blank">EDSF - Flugzeughalle</a>
         <span class="status-dot"></span>
       </div>
       <div class="media-container">
-        <!-- Nutzung von wsrv.nl Proxy für HTTP-zu-HTTPS Brücke -->
-        <!-- class="live-cam" und data-url für Auto-Refresh hinzugefügt -->
-        <img class="live-cam" data-proxy="true" data-url="www.lgh-platz.de/cam/cam11.jpg" src="https://wsrv.nl/?url=www.lgh-platz.de/cam/cam11.jpg" alt="EDSF Flugzeughalle">
+        <!-- TRICK: src ist ein leeres Pixel. data-url enthält das echte Ziel. 
+             Der Browser lädt beim Start NICHTS Altes. -->
+        <img class="live-cam" 
+             data-proxy="true" 
+             data-url="www.lgh-platz.de/cam/cam11.jpg" 
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+             alt="EDSF Flugzeughalle">
       </div>
     </div>
 
@@ -198,7 +214,11 @@
         <span class="status-dot"></span>
       </div>
       <div class="media-container">
-        <img class="live-cam" data-proxy="true" data-url="www.lgh-platz.de/cam/cam21.jpg" src="https://wsrv.nl/?url=www.lgh-platz.de/cam/cam21.jpg" alt="EDSF Parkplatz">
+        <img class="live-cam" 
+             data-proxy="true" 
+             data-url="www.lgh-platz.de/cam/cam21.jpg" 
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+             alt="EDSF Parkplatz">
       </div>
     </div>
 
@@ -208,7 +228,11 @@
         <span class="status-dot"></span>
       </div>
       <div class="media-container">
-        <img class="live-cam" data-proxy="true" data-url="www.lgh-platz.de/cam/cam31.jpg" src="https://wsrv.nl/?url=www.lgh-platz.de/cam/cam31.jpg" alt="EDSF Flugfeld 1">
+        <img class="live-cam" 
+             data-proxy="true" 
+             data-url="www.lgh-platz.de/cam/cam31.jpg" 
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+             alt="EDSF Flugfeld 1">
       </div>
     </div>
 
@@ -218,7 +242,11 @@
         <span class="status-dot"></span>
       </div>
       <div class="media-container">
-        <img class="live-cam" data-proxy="true" data-url="www.lgh-platz.de/cam/cam41.jpg" src="https://wsrv.nl/?url=www.lgh-platz.de/cam/cam41.jpg" alt="EDSF Flugfeld 2">
+        <img class="live-cam" 
+             data-proxy="true" 
+             data-url="www.lgh-platz.de/cam/cam41.jpg" 
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+             alt="EDSF Flugfeld 2">
       </div>
     </div>
 
@@ -228,7 +256,11 @@
         <span class="status-dot"></span>
       </div>
       <div class="media-container">
-        <img class="live-cam" data-proxy="true" data-url="www.lgh-platz.de/cam/cam51.jpg" src="https://wsrv.nl/?url=www.lgh-platz.de/cam/cam51.jpg" alt="EDSF Flugfeld 3">
+        <img class="live-cam" 
+             data-proxy="true" 
+             data-url="www.lgh-platz.de/cam/cam51.jpg" 
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+             alt="EDSF Flugfeld 3">
       </div>
     </div>
 
@@ -238,7 +270,11 @@
         <span class="status-dot"></span>
       </div>
       <div class="media-container">
-        <img class="live-cam" data-proxy="true" data-url="www.lgh-platz.de/cam/cam61.jpg" src="https://wsrv.nl/?url=www.lgh-platz.de/cam/cam61.jpg" alt="EDSF Piste 11">
+        <img class="live-cam" 
+             data-proxy="true" 
+             data-url="www.lgh-platz.de/cam/cam61.jpg" 
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+             alt="EDSF Piste 11">
       </div>
     </div>
 
@@ -248,7 +284,11 @@
         <span class="status-dot"></span>
       </div>
       <div class="media-container">
-        <img class="live-cam" data-proxy="true" data-url="www.lgh-platz.de/cam/cam91.jpg" src="https://wsrv.nl/?url=www.lgh-platz.de/cam/cam91.jpg" alt="EDSF Norden">
+        <img class="live-cam" 
+             data-proxy="true" 
+             data-url="www.lgh-platz.de/cam/cam91.jpg" 
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+             alt="EDSF Norden">
       </div>
     </div>
 
@@ -259,7 +299,10 @@
         <span class="status-dot"></span>
       </div>
       <div class="media-container">
-        <img class="live-cam" data-url="https://www.ziis.de/cam/current_WE.jpg" src="https://www.ziis.de/cam/current_WE.jpg" alt="Rickenbach 1">
+        <img class="live-cam" 
+             data-url="https://www.ziis.de/cam/current_WE.jpg" 
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+             alt="Rickenbach 1">
       </div>
     </div>
 
@@ -269,7 +312,10 @@
         <span class="status-dot"></span>
       </div>
       <div class="media-container">
-        <img class="live-cam" data-url="https://www.ziis.de/cam/mega.jpg" src="https://www.ziis.de/cam/mega.jpg" alt="Rickenbach 2">
+        <img class="live-cam" 
+             data-url="https://www.ziis.de/cam/mega.jpg" 
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+             alt="Rickenbach 2">
       </div>
     </div>
 
@@ -280,12 +326,15 @@
         <span class="status-dot"></span>
       </div>
       <div class="media-container">
-        <!-- Nutzung von wsrv.nl Proxy für HTTP-zu-HTTPS Brücke -->
-        <img class="live-cam" data-proxy="true" data-url="www.schopfheim.de/webcam/gersbach/video.jpg" src="https://wsrv.nl/?url=www.schopfheim.de/webcam/gersbach/video.jpg" alt="Gersbach">
+        <img class="live-cam" 
+             data-proxy="true" 
+             data-url="www.schopfheim.de/webcam/gersbach/video.jpg" 
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+             alt="Gersbach">
       </div>
     </div>
 
-    <!-- Belchen: Zurück zum Original -->
+    <!-- Belchen: Iframe (Kein Cache-Fix möglich da externe Seite) -->
     <div class="cam-card">
       <div class="cam-header">
         <a href="https://belchen.it-wms.com/wmspanoviewer.php?lang=de" target="_blank">Belchen</a>
@@ -302,11 +351,14 @@
         <span class="status-dot"></span>
       </div>
       <div class="media-container">
-        <img class="live-cam" data-url="https://www.feldberger-hof.de/static/webcam/fh-webcam.jpg" src="https://www.feldberger-hof.de/static/webcam/fh-webcam.jpg" alt="Feldberg Seebuck">
+        <img class="live-cam" 
+             data-url="https://www.feldberger-hof.de/static/webcam/fh-webcam.jpg" 
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+             alt="Feldberg Seebuck">
       </div>
     </div>
 
-    <!-- Höchenschwand: Jetzt mit korrigiertem scale-hack-strong -->
+    <!-- Höchenschwand -->
     <div class="cam-card">
       <div class="cam-header">
         <a href="https://webcam-hoehenschwand.gerda-hirsch-woelfl.de/feldberg.php" target="_blank">Höchenschwand Blick nach Westen</a>
@@ -324,8 +376,10 @@
         <span class="status-dot"></span>
       </div>
       <div class="media-container">
-        <!-- Direktlink zum aktuellen Bild (1200px Breite) für saubere Ansicht -->
-        <img class="live-cam" data-url="https://www.foto-webcam.eu/webcam/hochblauen/current/1200.jpg" src="https://www.foto-webcam.eu/webcam/hochblauen/current/1200.jpg" alt="Hochblauen">
+        <img class="live-cam" 
+             data-url="https://www.foto-webcam.eu/webcam/hochblauen/current/1200.jpg" 
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+             alt="Hochblauen">
       </div>
     </div>
 
@@ -336,7 +390,10 @@
         <span class="status-dot"></span>
       </div>
       <div class="media-container">
-        <img class="live-cam" data-url="https://www.lsg-suedwest.de/WebCam/snapshot.jpg" src="https://www.lsg-suedwest.de/WebCam/snapshot.jpg" alt="Flugplatz Herten">
+        <img class="live-cam" 
+             data-url="https://www.lsg-suedwest.de/WebCam/snapshot.jpg" 
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+             alt="Flugplatz Herten">
       </div>
     </div>
 
@@ -347,7 +404,10 @@
         <span class="status-dot"></span>
       </div>
       <div class="media-container">
-        <img class="live-cam" data-url="https://cam.afu-server.de/Klippeneck-CAM3.jpg" src="https://cam.afu-server.de/Klippeneck-CAM3.jpg" alt="Klippeneck Piste">
+        <img class="live-cam" 
+             data-url="https://cam.afu-server.de/Klippeneck-CAM3.jpg" 
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+             alt="Klippeneck Piste">
       </div>
     </div>
 
@@ -358,40 +418,24 @@
         <span class="status-dot"></span>
       </div>
       <div class="media-container">
-        <img class="live-cam" data-url="https://cam.afu-server.de/Klippeneck-CAM1.jpg" src="https://cam.afu-server.de/Klippeneck-CAM1.jpg" alt="Klippeneck Panorama">
+        <img class="live-cam" 
+             data-url="https://cam.afu-server.de/Klippeneck-CAM1.jpg" 
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+             alt="Klippeneck Panorama">
       </div>
     </div>
 
-    <!-- Flugplatz Bremgarten: Neu hinzugefügt -->
+    <!-- Flugplatz Bremgarten -->
     <div class="cam-card">
       <div class="cam-header">
         <a href="https://webcam-gewerbepark.ftp-land-in-sicht.de/snap_c1.jpg" target="_blank">Flugplatz Bremgarten</a>
         <span class="status-dot"></span>
       </div>
       <div class="media-container">
-        <img class="live-cam" data-url="https://webcam-gewerbepark.ftp-land-in-sicht.de/snap_c1.jpg" src="https://webcam-gewerbepark.ftp-land-in-sicht.de/snap_c1.jpg" alt="Flugplatz Bremgarten">
-      </div>
-    </div>
-
-    <!-- Flugplatz Freiburg: Neu hinzugefügt -->
-    <div class="cam-card">
-      <div class="cam-header">
-        <a href="https://freiburg-airport.de/webcam/" target="_blank">Flugplatz Freiburg</a>
-        <span class="status-dot"></span>
-      </div>
-      <div class="media-container scale-hack">
-        <iframe src="https://freiburg-airport.de/webcam/" loading="lazy"></iframe>
-      </div>
-    </div>
-
-    <!-- Flugplatz Donaueschingen: Neu hinzugefügt -->
-    <div class="cam-card">
-      <div class="cam-header">
-        <a href="https://www.swisswebcams.ch/webcam/1471968410" target="_blank">Flugplatz Donaueschingen</a>
-        <span class="status-dot"></span>
-      </div>
-      <div class="media-container scale-hack">
-        <iframe src="https://www.swisswebcams.ch/webcam/1471968410" loading="lazy"></iframe>
+        <img class="live-cam" 
+             data-url="https://webcam-gewerbepark.ftp-land-in-sicht.de/snap_c1.jpg" 
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+             alt="Flugplatz Bremgarten">
       </div>
     </div>
 
