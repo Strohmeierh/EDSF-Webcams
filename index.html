@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huberts Webcam-Übersicht</title>
+  <style>
+    /* --- 1. Grundeinstellungen & Typografie --- */
+    :root {
+      --bg-color: #0f172a;       /* Dunkles Blau-Grau */
+      --card-bg: #1e293b;        /* Karten-Hintergrund */
+      --text-main: #e2e8f0;      /* Textfarbe */
+      --accent-color: #38bdf8;   /* Neon Blau */
+      --accent-glow: 0 0 10px rgba(56, 189, 248, 0.5);
+      --font-stack: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-stack);
+    }
+
+    h1 {
+      text-align: center;
+      /* text-transform: uppercase; entfernt */
+      letter-spacing: 2px;
+      margin-bottom: 40px;
+      color: var(--accent-color);
+      text-shadow: var(--accent-glow);
+      font-weight: 300;
+      border-bottom: 1px solid var(--accent-color);
+      display: inline-block;
+      padding-bottom: 10px;
+      left: 50%;
+      position: relative;
+      transform: translateX(-50%);
+    }
+
+    /* --- 2. Das Raster (Grid) Layout --- */
+    .dashboard-grid {
+      display: grid;
+      /* Mindestens 350px breit, sonst füllen */
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+      gap: 20px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    /* --- 3. Karten-Design --- */
+    .cam-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #334155;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cam-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.7), var(--accent-glow);
+      border-color: var(--accent-color);
+    }
+
+    .cam-header {
+      padding: 15px;
+      background: rgba(0,0,0,0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cam-header h2 {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .cam-header a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: color 0.2s;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    .cam-header a:hover {
+      color: #fff;
+      text-shadow: var(--accent-glow);
+    }
+
+    .status-dot {
+      height: 8px;
+      width: 8px;
+      background-color: #10b981; /* Grün */
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 5px #10b981;
+    }
+
+    /* --- 4. Medien Container --- */
+    .media-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9; 
+      background-color: #000;
+      overflow: hidden;
+    }
+
+    .media-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Füllt den Rahmen aus */
+      display: block;
+    }
+
+    .media-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* --- 5. Spezial-Hacks --- */
+
+    /* SCALE HACK: Für Webseiten, zoomt heraus um mehr zu zeigen */
+    .scale-hack iframe {
+      width: 200%;
+      height: 200%;
+      transform: scale(0.5);
+      transform-origin: 0 0;
+    }
+
+    /* --- 6. Mobile Anpassung --- */
+    @media (max-width: 600px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+      body {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Huberts Webcams-Hütten</h1>
+
+  <div class="dashboard-grid">
+
+    <!-- EDSF Block -->
+    <div class="cam-card">
+      <div class="cam-header">
+        <a href="http://www.lgh-platz.de/cam/cam11.jpg" target="_blank">EDSF - Flugzeughalle</a>
+        <span class="status-dot"></span>
+      </div>
+      <div class="media-container">
+        <img src="http://www.lgh-platz.de/cam/cam11.jpg" alt="EDSF Flugzeughalle">
+      </div>
+    </div>
+
+    <div class="cam-card">
+      <div class="cam-header">
+        <a href="http://www.lgh-platz.de/cam/cam21.jpg" target="_blank">EDSF - Parkplatz</a>
+        <span class="status-dot"></span>
+      </div>
+      <div class="media-container">
+        <img src="http://www.lgh-platz.de/cam/cam21.jpg" alt="EDSF Parkplatz">
+      </div>
+    </div>
+
+    <div class="cam-card">
+      <div class="cam-header">
+        <a href="http://www.lgh-platz.de/cam/cam31.jpg" target="_blank">EDSF - Flugfeld 1</a>
+        <span class="status-dot"></span>
+      </div>
+      <div class="media-container">
+        <img src="http://www.lgh-platz.de/cam/cam31.jpg" alt="EDSF Flugfeld 1">
+      </div>
+    </div>
+
+    <div class="cam-card">
+      <div class="cam-header">
+        <a href="http://www.lgh-platz.de/cam/cam41.jpg" target="_blank">EDSF - Flugfeld 2</a>
+        <span class="status-dot"></span>
+      </div>
+      <div class="media-container">
+        <img src="http://www.lgh-platz.de/cam/cam41.jpg" alt="EDSF Flugfeld 2">
+      </div>
+    </div>
+
+    <div class="cam-card">
+      <div class="cam-header">
+        <a href="http://www.lgh-platz.de/cam/cam51.jpg" target="_blank">EDSF - Flugfeld 3</a>
+        <span class="status-dot"></span>
+      </div>
+      <div class="media-container">
+        <img src="http://www.lgh-platz.de/cam/cam51.jpg" alt="EDSF Flugfeld 3">
+      </div>
+    </div>
+
+    <div class="cam-card">
+      <div class="cam-header">
+        <a href="http://www.lgh-platz.de/cam/cam61.jpg" target="_blank">EDSF - Start Piste 11 (West)</a>
+        <span class="status-dot"></span>
+      </div>
+      <div class="media-container">
+        <img src="http://www.lgh-platz.de/cam/cam61.jpg" alt="EDSF Piste 11">
+      </div>
+    </div>
+
+    <div class="cam-card">
+      <div class="cam-header">
+        <a href="http://www.lgh-platz.de/cam/cam91.jpg" target="_blank">EDSF - Blick nach Norden</a>
+        <span class="status-dot"></span>
+      </div>
+      <div class="media-container">
+        <img src="http://www.lgh-platz.de/cam/cam91.jpg" alt="EDSF Norden">
+      </div>
+    </div>
+
+    <!-- Schwarzwald Block -->
+    <div class="cam-card">
+      <div class="cam-header">
+        <a href="https://www.ziis.de/cam/current_WE.jpg" target="_blank">Rickenbach Altenschwand 1</a>
+        <span class="status-dot"></span>
+      </div>
+      <div class="media-container">
+        <img src="https://www.ziis.de/cam/current_WE.jpg" alt="Rickenbach 1">
+      </div>
+    </div>
+
+    <div class="cam-card">
+      <div class="cam-header">
+        <a href="https://www.ziis.de/cam/mega.jpg" target="_blank">Rickenbach Altenschwand 2</a>
+        <span class="status-dot"></span>
+      </div>
+      <div class="media-container">
+        <img src="https://www.ziis.de/cam/mega.jpg" alt="Rickenbach 2">
+      </div>
+    </div>
+
+    <div class="cam-card">
+      <div class="cam-header">
+        <a href="http://www.fewo-suedterrasse.de/Schwarzwald-Webcam-Gersbach.html" target="_blank">Gersbach</a>
+        <span class="status-dot"></span>
+      </div>
+      <div class="media-container scale-hack">
+        <!-- Gersbach ist eine HTML Seite, daher iframe und scale-hack -->
+        <iframe src="http://www.fewo-suedterrasse.de/Schwarzwald-Webcam-Gersbach.html" loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <div class="cam-card">
+      <div class="cam-header">
+        <a href="https://belchen.it-wms.com/" target="_blank">Belchen</a>
+        <span class="status-dot"></span>
+      </div>
+      <div class="media-container scale-hack">
+        <iframe src="https://belchen.it-wms.com/" loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <div class="cam-card">
+      <div class="cam-header">
+        <a href="https://www.feldberger-hof.de/static/webcam/fh-webcam.jpg" target="_blank">Feldberg Seebuck</a>
+        <span class="status-dot"></span>
+      </div>
+      <div class="media-container">
+        <img src="https://www.feldberger-hof.de/static/webcam/fh-webcam.jpg" alt="Feldberg Seebuck">
+      </div>
+    </div>
+
+  </div> 
+</body>
+</html>
