@@ -25,7 +25,6 @@
 
     h1 {
       text-align: center;
-      /* text-transform: uppercase; entfernt */
       letter-spacing: 2px;
       margin-bottom: 40px;
       color: var(--accent-color);
@@ -127,11 +126,21 @@
 
     /* --- 5. Spezial-Hacks --- */
 
-    /* SCALE HACK: Für Webseiten, zoomt heraus um mehr zu zeigen */
+    /* SCALE HACK: Für normale Webseiten, zoomt auf 50% */
     .scale-hack iframe {
       width: 200%;
       height: 200%;
       transform: scale(0.5);
+      transform-origin: 0 0;
+    }
+    
+    /* EXTRA SCALE HACK: Speziell für Höchenschwand */
+    /* Wir machen das Fenster 3.5x so groß und zoomen es dann klein, 
+       damit die große Webseite reinpasst ohne Scrollbalken */
+    .scale-hack-strong iframe {
+      width: 350%;            
+      height: 350%;           
+      transform: scale(0.2857); /* Kehrwert von 3.5 */
       transform-origin: 0 0;
     }
 
@@ -245,7 +254,7 @@
       </div>
     </div>
 
-    <!-- Gersbach: Updated to direct JPG via Proxy -->
+    <!-- Gersbach -->
     <div class="cam-card">
       <div class="cam-header">
         <a href="http://www.schopfheim.de/webcam/gersbach/video.jpg" target="_blank">Gersbach</a>
@@ -257,13 +266,14 @@
       </div>
     </div>
 
+    <!-- Belchen: Zurück zum Original -->
     <div class="cam-card">
       <div class="cam-header">
-        <a href="https://belchen.it-wms.com/" target="_blank">Belchen</a>
+        <a href="https://belchen.it-wms.com/wmspanoviewer.php?lang=de" target="_blank">Belchen (Panorama)</a>
         <span class="status-dot"></span>
       </div>
       <div class="media-container scale-hack">
-        <iframe src="https://belchen.it-wms.com/" loading="lazy"></iframe>
+        <iframe src="https://belchen.it-wms.com/wmspanoviewer.php?lang=de" loading="lazy"></iframe>
       </div>
     </div>
 
@@ -274,6 +284,62 @@
       </div>
       <div class="media-container">
         <img src="https://www.feldberger-hof.de/static/webcam/fh-webcam.jpg" alt="Feldberg Seebuck">
+      </div>
+    </div>
+
+    <!-- Höchenschwand: Jetzt mit korrigiertem scale-hack-strong -->
+    <div class="cam-card">
+      <div class="cam-header">
+        <a href="https://webcam-hoehenschwand.gerda-hirsch-woelfl.de/feldberg.php" target="_blank">Höchenschwand Blick nach Westen</a>
+        <span class="status-dot"></span>
+      </div>
+      <div class="media-container scale-hack-strong">
+        <iframe src="https://webcam-hoehenschwand.gerda-hirsch-woelfl.de/feldberg.php" loading="lazy" scrolling="no"></iframe>
+      </div>
+    </div>
+
+    <!-- Hochblauen -->
+    <div class="cam-card">
+      <div class="cam-header">
+        <a href="https://www.foto-webcam.eu/webcam/hochblauen/" target="_blank">Hochblauen</a>
+        <span class="status-dot"></span>
+      </div>
+      <div class="media-container">
+        <!-- Direktlink zum aktuellen Bild (1200px Breite) für saubere Ansicht -->
+        <img src="https://www.foto-webcam.eu/webcam/hochblauen/current/1200.jpg" alt="Hochblauen">
+      </div>
+    </div>
+
+    <!-- Flugplatz Herten -->
+    <div class="cam-card">
+      <div class="cam-header">
+        <a href="https://www.lsg-suedwest.de/WebCam/snapshot.jpg" target="_blank">Flugplatz Herten</a>
+        <span class="status-dot"></span>
+      </div>
+      <div class="media-container">
+        <img src="https://www.lsg-suedwest.de/WebCam/snapshot.jpg" alt="Flugplatz Herten">
+      </div>
+    </div>
+
+    <!-- Klippeneck Piste -->
+    <div class="cam-card">
+      <div class="cam-header">
+        <a href="https://cam.afu-server.de/Klippeneck-CAM3.jpg" target="_blank">Klippeneck Piste</a>
+        <span class="status-dot"></span>
+      </div>
+      <div class="media-container">
+        <img src="https://cam.afu-server.de/Klippeneck-CAM3.jpg" alt="Klippeneck Piste">
+      </div>
+    </div>
+
+    <!-- Klippeneck Panorama -->
+    <div class="cam-card">
+      <div class="cam-header">
+        <a href="https://cam.afu-server.de/Klippeneck-CAM1.jpg" target="_blank">Klippeneck Panorama</a>
+        <span class="status-dot"></span>
+      </div>
+      <div class="media-container">
+        <img src="https://cam.afu-server.de/Klippeneck-CAM1.jpg" alt="Klippeneck Panorama">
       </div>
     </div>
 
