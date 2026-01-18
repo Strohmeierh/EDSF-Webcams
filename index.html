@@ -397,7 +397,6 @@
           
           if (useProxy) {
             // Bei Proxy-Bildern: Neue URL an den Proxy übergeben
-            // Der Proxy lädt das Bild neu, weil sich die Quell-URL geändert hat (durch den Timestamp)
             img.src = 'https://wsrv.nl/?url=' + urlWithTime; 
           } else {
             // Bei direkten Bildern: Einfach Timestamp anhängen
@@ -405,11 +404,12 @@
           }
         }
       });
-      // Optional: Konsolenausgabe zur Kontrolle
-      // console.log('Webcams aktualisiert: ' + new Date().toLocaleTimeString());
     }
 
-    // Starte Refresh alle 60.000 Millisekunden (60 Sekunden)
+    // 1. Sofort beim Laden einmal ausführen (Cache umgehen beim Start)
+    window.onload = refreshWebcams;
+
+    // 2. Danach alle 60 Sekunden wiederholen
     setInterval(refreshWebcams, 60000);
   </script>
 </body>
