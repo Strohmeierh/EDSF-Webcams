@@ -1,12 +1,12 @@
 {
   "https://wsrv.nl/?url=cam.afu-server.de/Klippeneck-CAM1.jpg": {
-    "hash": "26d1b570fdde80b22c04b48f86d3c341abe5b6ae",
-    "lastChange": 1783546452000,
+    "hash": "387913994c22dcb278b61e9cfd0edd36ebae1f22",
+    "lastChange": 1783546752000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=cam.afu-server.de/Klippeneck-CAM3.jpg": {
-    "hash": "5a05d155cbc957dbc7add2b81bee1a51086124b2",
-    "lastChange": 1783546452000,
+    "hash": "7fd960d616c54236006d51b151e7f769338c507c",
+    "lastChange": 1783546752000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=cam.afu-server.de/Klippeneck-CAM4.jpg": {
@@ -15,8 +15,8 @@
     "source": "origin"
   },
   "https://wsrv.nl/?url=donau-airport.de/donau-airport.de/webcam/cam_neu2.jpg": {
-    "hash": "23bb0d6b4db693438991e26b21370533dbaabc22",
-    "lastChange": 1783546457000,
+    "hash": "f02a191c1b023649b0ee25ee650e3964ef7ccf10",
+    "lastChange": 1783546757000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=webcam-gewerbepark.ftp-land-in-sicht.de/snap_c1.jpg": {
@@ -60,8 +60,8 @@
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.lgh-platz.de/cam/cam61.jpg": {
-    "hash": "fb5cbe856fa483ff8e9602b87c76dba1dd3a8cbc",
-    "lastChange": 1783545916000,
+    "hash": "1900b743ec67defac8c2bd4731afe0aaa61b3339",
+    "lastChange": 1783546516000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.lgh-platz.de/cam/cam91.jpg": {
@@ -70,8 +70,8 @@
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.lsg-suedwest.de/WebCam/snapshot.jpg": {
-    "hash": "7cc1378230520a9c8009cf26aa28a6ae5a790317",
-    "lastChange": 1783546437000,
+    "hash": "0b93c3d6ff04117de404b5a5147c61d926935130",
+    "lastChange": 1783546797000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.notschrei-loipe.de/notschrei-loipe.jpg": {
@@ -90,8 +90,8 @@
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.ziis.de/cam/mega.jpg": {
-    "hash": "114bab7d4a1715c7d973a7aedde111181a0d913e",
-    "lastChange": 1783545602000,
+    "hash": "eb0d7f43db50d519953c3406a9842f7ab7c4367f",
+    "lastChange": 1783546802000,
     "source": "origin"
   }
 }
