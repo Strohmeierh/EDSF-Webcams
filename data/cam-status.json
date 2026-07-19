@@ -1,12 +1,12 @@
 {
   "https://wsrv.nl/?url=cam.afu-server.de/Klippeneck-CAM1.jpg": {
-    "hash": "8d3e8f43d0623fb88eef84f46a740a911fa9fdaa",
-    "lastChange": 1784499564000,
+    "hash": "f7917692f109b3e348ff7174c5ddbc78d4068232",
+    "lastChange": 1784499834000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=cam.afu-server.de/Klippeneck-CAM3.jpg": {
-    "hash": "9dd405ae670f4391b9c4b41bdbcc82e4b3962d36",
-    "lastChange": 1784499564000,
+    "hash": "e32709d5920dc6999cd79c69985a45821183d6b3",
+    "lastChange": 1784499835000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=cam.afu-server.de/Klippeneck-CAM4.jpg": {
@@ -15,8 +15,8 @@
     "source": "origin"
   },
   "https://wsrv.nl/?url=donau-airport.de/donau-airport.de/webcam/cam_neu2.jpg": {
-    "hash": "ae677fcdf99c93e878c3cf5283381d14a47c843c",
-    "lastChange": 1784499557000,
+    "hash": "333cc61d61b71e927a43033dbced2454dcff8435",
+    "lastChange": 1784499857000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=webcam-gewerbepark.ftp-land-in-sicht.de/snap_c1.jpg": {
@@ -26,7 +26,7 @@
   },
   "https://wsrv.nl/?url=webcam.datacreate.de/feldbergblick/webcam-feldbergblick.jpg": {
     "hash": "da378c46788a0b3cf9f82211490ec2ed95ffe870",
-    "lastChange": 1784499482000,
+    "lastChange": 1784499842000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.feldberger-hof.de/static/webcam/fh-webcam.jpg": {
@@ -40,23 +40,23 @@
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.lgh-platz.de/cam/cam21.jpg": {
-    "hash": "d034536b643bf97062416e18f636638c684d30c2",
-    "lastChange": 1784499213000,
+    "hash": "413a21e8e3743305c14d99fce630cabb3ae94579",
+    "lastChange": 1784499803000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.lgh-platz.de/cam/cam31.jpg": {
-    "hash": "3dba1392722964d0c7f9ed52d3d3f620b1ef774e",
-    "lastChange": 1784499198000,
+    "hash": "fb3bfa6d95b8707327a47dbf06d7bc6b8067d25b",
+    "lastChange": 1784499797000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.lgh-platz.de/cam/cam41.jpg": {
-    "hash": "b33724ad4edf091047b9f47e48b2e360bdd83d40",
-    "lastChange": 1784499240000,
+    "hash": "fcb12f8daa6868274126f38bb66f9e0ce9d6e4ff",
+    "lastChange": 1784499843000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.lgh-platz.de/cam/cam51.jpg": {
-    "hash": "c50b957801e90bee9d5633a646d5ab136c0aa2ab",
-    "lastChange": 1784499135000,
+    "hash": "1af1afc520b9d5de31c1c0774d77b6577d0a815b",
+    "lastChange": 1784499735000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.lgh-platz.de/cam/cam61.jpg": {
@@ -65,23 +65,23 @@
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.lgh-platz.de/cam/cam91.jpg": {
-    "hash": "ff7e5b32e21227b6d820317ff5a539604071898e",
-    "lastChange": 1784499270000,
+    "hash": "5e0911fa41ebd8cfb073489f28c2945efa406645",
+    "lastChange": 1784499870000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.lsg-suedwest.de/WebCam/snapshot.jpg": {
-    "hash": "d8f221de2eaa28e7a7be3a90f62d3f8232134108",
-    "lastChange": 1784499564000,
+    "hash": "08ac8b06275a4b7807ee8f5240085d36fc1ac894",
+    "lastChange": 1784499864000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.notschrei-loipe.de/notschrei-loipe.jpg": {
-    "hash": "158f453ed43a5bfa48872556194c7985ae396570",
-    "lastChange": 1784499303000,
+    "hash": "dd7d87993994548f697816d7499f12b0cb3838d1",
+    "lastChange": 1784499603000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.schopfheim.de/webcam/gersbach/video.jpg": {
-    "hash": "556d6708ecdff968ffd6f86553d4d0e9fe04be74",
-    "lastChange": 1784499557000,
+    "hash": "853f8b54000773fa559880fed6c5c17e31eb7cd2",
+    "lastChange": 1784499856000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.ziis.de/cam/current_WE.jpg": {
@@ -90,8 +90,8 @@
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.ziis.de/cam/mega.jpg": {
-    "hash": "f6950477a63f395d081240ef47e6ec40d142b08b",
-    "lastChange": 1784498409000,
+    "hash": "f1d2761dfe7e69f4f8d507f898c432d783595657",
+    "lastChange": 1784499600000,
     "source": "origin"
   }
 }
