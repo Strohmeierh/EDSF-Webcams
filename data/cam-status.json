@@ -1,12 +1,12 @@
 {
   "https://wsrv.nl/?url=cam.afu-server.de/Klippeneck-CAM1.jpg": {
-    "hash": "be24320c7579698687e635e625ea918360de92f5",
-    "lastChange": 1784609658000,
+    "hash": "6bdc39dc7dbb28bc589de9d26ae1031239e402e9",
+    "lastChange": 1784609958000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=cam.afu-server.de/Klippeneck-CAM3.jpg": {
-    "hash": "ecb8a5db87ca4774da4516637e8872dd9c09a4ae",
-    "lastChange": 1784609658000,
+    "hash": "02312e062df9b3368abb948c67da008933e4b649",
+    "lastChange": 1784609958000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=cam.afu-server.de/Klippeneck-CAM4.jpg": {
@@ -15,8 +15,8 @@
     "source": "origin"
   },
   "https://wsrv.nl/?url=donau-airport.de/donau-airport.de/webcam/cam_neu2.jpg": {
-    "hash": "f64546efe8cb1ea039fa87b59c11f0bf88e45e07",
-    "lastChange": 1784609653000,
+    "hash": "c04c7a38fd56285dd65ce28e42088e17aa3bbf74",
+    "lastChange": 1784609953000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=webcam-gewerbepark.ftp-land-in-sicht.de/snap_c1.jpg": {
@@ -70,8 +70,8 @@
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.lsg-suedwest.de/WebCam/snapshot.jpg": {
-    "hash": "4f6f4a5be4a83ccb4c7edb7a227d980d34d9d264",
-    "lastChange": 1784609656000,
+    "hash": "65d851a850dca1a001920c6edc72acd949d11277",
+    "lastChange": 1784609957000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.notschrei-loipe.de/notschrei-loipe.jpg": {
@@ -85,13 +85,13 @@
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.ziis.de/cam/current_WE.jpg": {
-    "hash": "3068d721fad0cd80cb1573ef36be4857941b1330",
-    "lastChange": 1784609410000,
+    "hash": "6a00c12def12545bbffb45314c5e787ef08a285d",
+    "lastChange": 1784610011000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.ziis.de/cam/mega.jpg": {
-    "hash": "be12a33f739451e16cce8db26bd37eb8b1bab378",
-    "lastChange": 1784608801000,
+    "hash": "a03482793e8dbc6b52fafee02b1e1a348c962de7",
+    "lastChange": 1784610002000,
     "source": "origin"
   }
 }
