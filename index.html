@@ -388,6 +388,29 @@
       justify-content: center;
     }
 
+    /* Flugzeughalle: einfacher Code-Sichtschutz */
+    .lock-overlay {
+      position: absolute; inset: 0; z-index: 5;
+      background: rgba(15,23,42,0.94);
+      display: flex; align-items: center; justify-content: center; padding: 12px;
+    }
+    .lock-box { text-align: center; max-width: 260px; }
+    .lock-title { font-size: 1rem; font-weight: 600; color: var(--accent); margin-bottom: 4px; }
+    .lock-sub { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 12px; }
+    .lock-input {
+      width: 130px; text-align: center; font-size: 1.1rem; letter-spacing: 0.25em;
+      padding: 8px 10px; border-radius: 8px; border: 1px solid var(--card-border);
+      background: var(--bg); color: var(--text); font-family: var(--font); outline: none;
+    }
+    .lock-input:focus { border-color: var(--accent); }
+    .lock-btn {
+      display: block; margin: 10px auto 0; padding: 8px 20px; border-radius: 8px;
+      border: 1px solid var(--accent); background: var(--accent); color: var(--bg);
+      font-weight: 600; cursor: pointer; font-family: var(--font);
+    }
+    .lock-btn:hover { background: #7dd3fc; }
+    .lock-err { font-size: 0.78rem; color: #f87171; margin-top: 8px; min-height: 1em; }
+
     /* Lade-Spinner */
     .media-container::after {
       content: "";
@@ -962,13 +985,22 @@
         </div>
       </div>
 
-      <div class="cam-card">
+      <div class="cam-card" id="halle-card">
         <div class="cam-header">
           <a href="http://www.lgh-platz.de/cam/cam11.jpg" target="_blank" rel="noopener">EDSF – Flugzeughalle</a>
           <span class="status-dot"></span>
         </div>
-        <div class="media-container">
-          <img class="live-cam" data-src="https://wsrv.nl/?url=www.lgh-platz.de/cam/cam11.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="640" height="360" alt="EDSF Flugzeughalle">
+        <div class="media-container loaded">
+          <img class="live-cam" data-locksrc="https://wsrv.nl/?url=www.lgh-platz.de/cam/cam11.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="640" height="360" alt="EDSF Flugzeughalle">
+          <div class="lock-overlay" id="halle-lock">
+            <div class="lock-box">
+              <div class="lock-title">🔒 Flugzeughalle</div>
+              <div class="lock-sub">Zugang nur mit Code</div>
+              <input class="lock-input" id="halle-input" type="password" inputmode="numeric" autocomplete="off" maxlength="8" placeholder="Code" aria-label="Code für Flugzeughalle-Kamera">
+              <button class="lock-btn" id="halle-btn" type="button">Entsperren</button>
+              <div class="lock-err" id="halle-err"></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -2088,11 +2120,16 @@
       var eZiel = envT(noon.pts, 2000);
       if (eZiel !== null) trigger = eZiel + DALR * (2000 - elev) - EXC;
 
+      // Thermik endet ~1,5 h vor Sonnenuntergang (unabhängig von der Bodentemp.)
+      function hhmmDec(s) { var mm = /^(\d{1,2}):(\d{2})$/.exec(s || ''); return mm ? (+mm[1] + (+mm[2]) / 60) : null; }
+      var sunsetDec = hhmmDec(calcSunTimes(47.633, 7.941).set);
+      var endCap = sunsetDec !== null ? sunsetDec - 1.5 : 20;
+
       // nutzbar: Tagstunden, in denen die Auslösetemperatur erreicht ist
-      // (Thermik trägt bis zur Arbeitshöhe), wenig Bewölkung, kein Regen.
-      // Fallback ≥ 400 m AGL, falls keine Auslösetemperatur berechenbar ist.
+      // (Thermik trägt bis zur Arbeitshöhe), wenig Bewölkung, kein Regen und
+      // noch nicht zu nah am Sonnenuntergang. Fallback ≥ 400 m AGL.
       var nutzbar = hours.filter(function (x) {
-        if (x.hh < 8 || x.hh > 20) return false;
+        if (x.hh < 8 || x.hh > endCap) return false;
         if ((x.cc !== null && x.cc >= 85) || (x.pr || 0) >= 0.5) return false;
         return trigger !== null ? (x.T0 >= trigger) : ((x.top - elev) >= 400);
       });
@@ -2137,7 +2174,7 @@
       }
       html += '</div>' +
         '<div style="font-size:0.72rem;color:var(--text-muted);margin-top:10px;line-height:1.4;">' +
-        'Parcel-Abschätzung aus dem Open-Meteo-Höhenprofil (Boden/850/700/500&nbsp;hPa, +1,5&nbsp;K Überhitzung). ' +
+        'Parcel-Abschätzung aus dem Open-Meteo-Höhenprofil (Boden/850/700/500&nbsp;hPa, +1,5&nbsp;K Überhitzung); Thermikende rund 1,5&nbsp;h vor Sonnenuntergang. ' +
         'Grobe Näherung – für die Flugvorbereitung Emagramm/SoaringMeteo beiziehen.</div>';
 
       el.innerHTML = html;
@@ -2729,6 +2766,58 @@
     loadOpenMeteo();
     loadThermik();
     if (!wxLoaded) { wxLoaded = true; loadWetter(); }
+
+    /* ── Flugzeughalle: einfacher Code-Sichtschutz (pro Gerät gespeichert) ──
+       Hinweis: Nur ein Sichtschutz gegen zufälliges Mitschauen – kein echter
+       Schutz (Bild-URL & Code stehen im Seitenquelltext). */
+    (function () {
+      var CODE = '5383';
+      var KEY  = 'edsf-halle-ok';
+      var card = document.getElementById('halle-card');
+      if (!card) return;
+      var img     = card.querySelector('img.live-cam');
+      var overlay = document.getElementById('halle-lock');
+      var input   = document.getElementById('halle-input');
+      var btn     = document.getElementById('halle-btn');
+      var err     = document.getElementById('halle-err');
+      var link    = card.querySelector('.cam-header a');
+      if (!img || !overlay) return;
+
+      function unlocked() { try { return localStorage.getItem(KEY) === '1'; } catch (e) { return false; } }
+
+      function reveal() {
+        overlay.style.display = 'none';
+        var src = img.getAttribute('data-locksrc');
+        if (src && !img.getAttribute('data-src')) {
+          img.setAttribute('data-src', src);
+          img.dataset.initialized = '1';
+          loadImg(img, Date.now());
+        }
+      }
+
+      if (unlocked()) {
+        reveal();
+      } else {
+        // Header-Link sperren, solange verriegelt (Capture-Phase blockt die Lightbox)
+        link.addEventListener('click', function (e) {
+          if (!unlocked()) { e.preventDefault(); e.stopImmediatePropagation(); if (input) input.focus(); }
+        }, true);
+
+        var pruefe = function () {
+          if (input.value.trim() === CODE) {
+            try { localStorage.setItem(KEY, '1'); } catch (e) {}
+            err.textContent = '';
+            reveal();
+          } else {
+            err.textContent = 'Falscher Code';
+            input.value = '';
+            input.focus();
+          }
+        };
+        btn.addEventListener('click', pruefe);
+        input.addEventListener('keydown', function (e) { if (e.key === 'Enter') pruefe(); });
+      }
+    })();
 
   })();
 
