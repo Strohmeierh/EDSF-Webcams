@@ -34,7 +34,9 @@ STATUS_FILE = ROOT / "data" / "cam-status.json"
 
 # Only cams that route through wsrv.nl participate. LSPV cams (Wangen-Lachen)
 # use data-cam= and have their own client-side timestamping.
-SRC_PATTERN = re.compile(r'data-src="(https://wsrv\.nl/\?url=[^"]+)"')
+# data-locksrc = code-protected cam (e.g. Flugzeughalle): same wsrv URL, only
+# hidden client-side until a code is entered – still track its age.
+SRC_PATTERN = re.compile(r'data-(?:src|locksrc)="(https://wsrv\.nl/\?url=[^"]+)"')
 
 TIMEOUT = 20
 USER_AGENT = "Mozilla/5.0 (compatible; CamStatusBot/1.0)"
