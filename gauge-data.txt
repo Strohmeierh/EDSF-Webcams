@@ -1,85 +1,22 @@
-{
-           "timeUTC":"2026,07,27,04,50,00",
-              "date":"2026.07.27 06:50",
-        "dateFormat":"y.m.d h:m",
- "SensorContactLost":"0",
-          "tempunit":"C",
-          "windunit":"km/h",
-         "pressunit":"hPa",
-          "rainunit":"mm",
-     "cloudbaseunit":"ft",
-              "temp":"16,5",
-            "tempTL":"16,4",
-            "tempTH":"19,2",
-           "TtempTL":"06:48:47",
-           "TtempTH":"00:00:09",
-         "temptrend":"-0.4",
-            "intemp":"28,1",
-          "intempTL":"28,1",
-          "intempTH":"28,9",
-         "TintempTL":"06:43:59",
-         "TintempTH":"00:00:02",
-               "hum":"76",
-             "humTL":"51",
-             "humTH":"76",
-            "ThumTL":"00:00:02",
-            "ThumTH":"06:46:01",
-             "inhum":"28",
-               "dew":"12,3",
-        "dewpointTL":"8,5",
-        "dewpointTH":"12,3",
-       "TdewpointTL":"00:31:35",
-       "TdewpointTH":"06:46:01",
-            "wchill":"16,5",
-          "wchillTL":"16,4",
-         "TwchillTL":"06:48:47",
-         "heatindex":"16,2",
-       "heatindexTH":"18,5",
-      "TheatindexTH":"00:00:09",
-           "apptemp":"11.6",
-         "apptempTL":"0",
-         "apptempTH":"0",
-        "TapptempTL":"",
-        "TapptempTH":"",
-           "humidex":"18.9",
-             "press":"1012,6",
-            "pressL":"981,6",
-            "pressH":"1030,7",
-           "pressTL":"1010,9",
-           "pressTH":"1012,6",
-          "TpressTL":"00:00:05",
-          "TpressTH":"06:45:01",
-     "presstrendval":"1.1",
-             "rfall":"0.0",
-             "rrate":"0.0",
-           "rrateTM":"0.0",
-          "TrrateTM":"00:00:02",
-      "hourlyrainTH":"0.0",
-     "ThourlyrainTH":"",
-    "LastRainTipISO":"2000-01-01 00:00",
-           "wlatest":"45",
-            "wspeed":"29",
-            "windTM":"34",
-             "wgust":"45",
-           "wgustTM":"56",
-          "TwgustTM":"04:59:31",
-           "bearing":"270",
-        "avgbearing":"270",
-         "bearingTM":"276",
-"BearingRangeFrom10":"000",
-  "BearingRangeTo10":"000",
-        "domwinddir":"W",
-      "WindRoseData":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,522.6,0.0,0.0,0.0],
-           "windrun":"157.4",
-         "Tbeaufort":"F5",
-                "UV":"   - -",
-              "UVTH":"   - -",
-          "SolarRad":"   - -",
-           "SolarTM":"   - -",
-   "CurrentSolarMax":"34",
-    "cloudbasevalue":"4638",
-          "forecast":"Recht sch&#246;nes Wetter, Besserung zu erwarten",
-           "version":"5.4.0",
-             "build":"",
-               "ver":"14"
-}
+<html>
+<head>
+<title>The page is temporarily unavailable</title>
+<style>
+body { font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body bgcolor="white" text="black">
+<table width="100%" height="100%">
+<tr>
+<td align="center" valign="middle">
+The page you are looking for is temporarily unavailable.<br/>
+Please try again later.
+<br />
+44256c190b0ae399eb39a557ee257923
+3d1d20db69347960f1411e47f9f6314c
+99a81931407a1a3dda1d450c5e2f83a7
+</td>
+</tr>
+</table>
+</body>
+</html>
