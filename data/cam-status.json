@@ -1,17 +1,17 @@
 {
   "https://wsrv.nl/?url=cam.afu-server.de/Klippeneck-CAM1.jpg": {
-    "hash": "5cbf3883482436f3d4dbbbf985d1db02deaad7d3",
-    "lastChange": 1788297565000,
+    "hash": "0e01a00fb10046a3aae927960565beee89033199",
+    "lastChange": 1788297865000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=cam.afu-server.de/Klippeneck-CAM3.jpg": {
-    "hash": "5b191900b06dd75f2450496a9c4bdcaa0adcee84",
-    "lastChange": 1788297565000,
+    "hash": "fe7a84818cc00467b3f258c5d5f065c23b436f24",
+    "lastChange": 1788297866000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=cam.afu-server.de/Klippeneck-CAM4.jpg": {
-    "hash": "d62e93aa94fa5412e9b432fe86a8d8235b195314",
-    "lastChange": 1788297569000,
+    "hash": "76b4af699f7d424f77b536c49db37dd3c071c70c",
+    "lastChange": 1788297869000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=donau-airport.de/donau-airport.de/webcam/cam_neu2.jpg": {
@@ -26,7 +26,7 @@
   },
   "https://wsrv.nl/?url=webcam.datacreate.de/feldbergblick/webcam-feldbergblick.jpg": {
     "hash": "ad0c8176441d4145cfcf0935c88895e79ae7cceb",
-    "lastChange": 1788297483000,
+    "lastChange": 1788297842000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.feldberger-hof.de/static/webcam/fh-webcam.jpg": {
@@ -35,28 +35,28 @@
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.lgh-platz.de/cam/cam11.jpg": {
-    "hash": "1abedc0a516270f463ce4a87f7befc1fe79d4b81",
-    "lastChange": 1788297127000,
+    "hash": "bea1dba56e3692c9f963df32d380f80cd72d885e",
+    "lastChange": 1788297730000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.lgh-platz.de/cam/cam21.jpg": {
-    "hash": "e6a832917efd80d9f592d79020893bc73968c444",
-    "lastChange": 1788297213000,
+    "hash": "718fa3d68b92e33266f41c2887bacd1b7f4547e9",
+    "lastChange": 1788297808000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.lgh-platz.de/cam/cam31.jpg": {
-    "hash": "13ab080f1920fe9fa443dd3f0933335d49ddb148",
-    "lastChange": 1788297197000,
+    "hash": "cd149eb7ab0098cc537f756efa701082336778dc",
+    "lastChange": 1788297798000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.lgh-platz.de/cam/cam41.jpg": {
-    "hash": "7b500ee314045ba0aa8a93f499031c2fa1672878",
-    "lastChange": 1788297034000,
+    "hash": "11e8e6daebc9e9d2be6658b2f0e3b729524d57bd",
+    "lastChange": 1788297633000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.lgh-platz.de/cam/cam51.jpg": {
-    "hash": "ca551eac8c795cc93d57c1fc4f96ec10237c966a",
-    "lastChange": 1788297017000,
+    "hash": "262d29e2e7f8d50392eb1c8fb6ab62c1229672ce",
+    "lastChange": 1788297617000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.lgh-platz.de/cam/cam61.jpg": {
@@ -65,8 +65,8 @@
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.lgh-platz.de/cam/cam91.jpg": {
-    "hash": "db0c90668f162963766646262fcefa8ebe16fac3",
-    "lastChange": 1788297031000,
+    "hash": "cf89a41e0db05976876b6a705bf9bb67ffa3b646",
+    "lastChange": 1788297629000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.lsg-suedwest.de/WebCam/snapshot.jpg": {
@@ -75,13 +75,13 @@
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.notschrei-loipe.de/notschrei-loipe.jpg": {
-    "hash": "35a0bae2f92865022187931a00c2589f462219dc",
-    "lastChange": 1788297303000,
+    "hash": "b2f1556d7ac2b905525f4e5ab8681c06c7d1dab8",
+    "lastChange": 1788297604000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.schopfheim.de/webcam/gersbach/video.jpg": {
-    "hash": "7212a51d3f4bf4e66829005b69e414da7339fab5",
-    "lastChange": 1788297580000,
+    "hash": "a778cd059cbc323ad3bb28cd1b17764d3c4043cb",
+    "lastChange": 1788297879000,
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.ziis.de/cam/current_WE.jpg": {
@@ -90,8 +90,8 @@
     "source": "origin"
   },
   "https://wsrv.nl/?url=www.ziis.de/cam/mega.jpg": {
-    "hash": "8fdb315b8cd2b81666bd864b66a3acd26965db91",
-    "lastChange": 1788296391000,
+    "hash": "27fe2f6a18fce1ebadd303b34fdd10d8a903cafe",
+    "lastChange": 1788297590000,
     "source": "origin"
   }
 }
